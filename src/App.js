@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from "./components/layout/Header"
+import AddTodo from "./components/AddTodo"
 import Todos from "./components/Todos"
 import './App.css';
 
@@ -36,14 +38,27 @@ class App extends Component {
   delTodo = (id) => {
     this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] });
   }
+
+  AddTodo =(title) =>{
+    const newTodo ={
+      id:4,
+      title,
+      completed: false
+    }
+    this.setState({todos: [...this.state.todos, newTodo]})
+  }
   render(){
       console.log(this.state.todos)
       return (
+        <Router>
+
           <div >
             <Header />
+            <AddTodo AddTodo={this.AddTodo}/>
         <Todos todos={this.state.todos} markComplete={this.markComplete}
         delTodo={this.delTodo}/>
           </div>
+        </Router>
       )
   }
 }
