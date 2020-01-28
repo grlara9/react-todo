@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { FormCheck, Button, Col, Form } from 'react-bootstrap'
+
 import propTypes from "prop-types"
 
 export class TodoItem extends Component {
@@ -15,22 +17,33 @@ export class TodoItem extends Component {
     render() {
         const {id, title} = this.props.todo;
         return (
+            <Form.Row>
+                <Col>
             <div style={this.getStyle()}>
-                <input type="checkbox" onChange={this.props.markComplete.bind(this, id)}/> {' '}
+                <input type="checkbox" onChange={this.props.markComplete.bind(this, id)}/> 
+                </div>
+            </Col>
+            <Col>
                 <p>{ title }
-                <button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}>  X </button>
                 </p>
-            </div>
+            </Col>
+            <Col>
+                <Button variant="danger" onClick={this.props.delTodo.bind(this, id)}  style={getStyle}>  Delete </Button>
+             </Col>
+            
+            </Form.Row>
         )
     }
 }
-TodoItem.propTypes ={
-    todo: propTypes.object.isRequired
+const getStyle ={
+    marginLeft: '10px'
 }
 
-const btnStyle = {
-    background: '#ff0000',
-    color: '#fff'
-    
+TodoItem.propTypes ={
+    todo: propTypes.object.isRequired,
+    markComplete: propTypes.func.isRequired,
+    delTodo: propTypes.func.isRequired,
 }
+
+
 export default TodoItem
