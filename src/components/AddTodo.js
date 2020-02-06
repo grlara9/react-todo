@@ -8,14 +8,19 @@ state={
 
 onSubmit =(e) =>{
     e.preventDefault();
+
     this.props.AddTodo(this.state.title);
-    this.setState({title:''});
+    this.setState({
+        title:''
+        
+    });
 }
 //setting the title with whatever we type in e.target.value;
 onChange =(e) => this.setState({title: e.target.value});
 
     render() {
         return (
+            
            <form onSubmit={this.onSubmit}  style={{display:'flex', marginBottom: '10px'}} style={getStyle}>
                <Form.Row  style={moveForm}>
                     <Col>
@@ -36,9 +41,10 @@ onChange =(e) => this.setState({title: e.target.value});
                value="submit"
                className="btn"
                style={{flex: '1'}}
-               >Add Todo </Button>
+        >Add Todo</Button>
                </Col>
                </Form.Row>
+               
            </form>
         )
     }

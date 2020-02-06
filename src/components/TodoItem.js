@@ -17,7 +17,7 @@ export class TodoItem extends Component {
     render() {
         const {id, title} = this.props.todo;
         return (
-            <Form.Row>
+            <Form.Row style={styleItem}>
                 <Col>
             <div style={this.getStyle()}>
                 <input type="checkbox" onChange={this.props.markComplete.bind(this, id)}/> 
@@ -37,6 +37,12 @@ export class TodoItem extends Component {
 }
 const getStyle ={
     marginLeft: '10px'
+}
+const styleItem ={
+    backgroundColor: 'orange', 
+    margin: '5px 0',
+    padding: '10px',
+    border: '3px dotted brown'
 }
 
 TodoItem.propTypes ={
